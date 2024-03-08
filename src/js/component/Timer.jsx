@@ -13,8 +13,14 @@ const Timer=()=>{
      let id= useRef()
    
      const handelTime=()=>{
-        id.current= setInterval(()=>{
+        id.current = setInterval(()=>{
             setCounter((count)=>count+1) 
+         },1000);
+     }
+
+     const countDown=()=>{
+        setInterval(()=>{
+            setCounter((count)=>count-1) 
          },1000);
      }
 
@@ -52,7 +58,9 @@ return(
         <input type="text" className="form-control"  placeholder="Set Starting Value Here" aria-label="StartingValue" value={startingV} onChange={(e)=> setStratingV(Number(e.target.value))}></input> 
     </div>
     <div className="container d-flex justify-content-center p-3">
-            <Button color="yellow" name="Press to set Starting Value" textcolor="black" event={()=>setCounter(startingV)}/>
+            <Button color="yellow" name="Press to set Starting Value" textcolor="black" event={()=>{setCounter(startingV)
+                clearInterval(id.current)}}/>
+            <Button color="pruple" name="Press to Start countdown" textcolor="black" event={()=>{countDown()}} />
     </div>
 </div>)
       
