@@ -31,9 +31,10 @@ const Timer=()=>{
             return counter
    }
    
+
+    
    
-   
-     const [startingV, setStratingV]= useState("")
+   const [startingV, setStratingV]= useState("")
     const [alertV, setAlertV]=useState("")
         
     if(alertV==counter && alertV!=""){alert("we got it")}
@@ -42,13 +43,13 @@ const Timer=()=>{
 console.log(counter)
 
 return( 
-<div id="mainDiv"> 
-    <div className="bigCounter">
+<div id="mainDiv" > 
+    <div className="bigCounter bg-dark">
             <div className="clock"><i class="far fa-clock"></i></div>
             <div>{(Math.floor(counter/1000000)) % 10}</div>
             <div>{(Math.floor(counter/100000)) % 10}</div>
             <div>{(Math.floor(counter/10000)) % 10}</div>
-            <div>{(Math.floor(counter/1000)) % 10}</div>
+            <div>{(Math.floor(counter/1000)) % 10}</div>ws
             <div>{(Math.floor(counter/100))% 10}</div>
             <div>{(Math.floor(counter/10)) % 10}</div>
             <div>{defCounter()%10}</div>

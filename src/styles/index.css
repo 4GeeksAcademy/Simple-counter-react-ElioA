@@ -1,6 +1,6 @@
 .bigCounter{
     text-align: center;
-    background: black;
+    
 
 }
 
@@ -8,7 +8,7 @@
     display: inline-block;
     font-size: 60px;
     line-height: 60px;
-    background: #101010;
+    background: #2b2a2a;
     color:white;
     padding:10px;
     margin: 5px;

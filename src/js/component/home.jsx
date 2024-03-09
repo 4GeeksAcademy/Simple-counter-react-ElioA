@@ -13,7 +13,7 @@ import Button from "./buttons";
 
 const Home = () => {
 	return (
-		<div className="container-fluid">
+		<div>
 			<Timer />
 		</div>
 	);
