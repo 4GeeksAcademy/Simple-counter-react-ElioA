@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 import Button from "./buttons";
+import Footer from "./footer";
 
 const Timer=()=>{
     
@@ -21,36 +22,27 @@ const Timer=()=>{
      const countDown=()=>{
        od.current = setInterval(()=>{
             if(counter > 0){setCounter((count)=>count -1)}
-           
-                    
-         },1000);
+            },1000);
      }
 
-    const [startingV, setStratingV]= useState("")
+   const defCounter=()=>{
+        if(counter<0){clearInterval(od.current)
+        setCounter(0)}
+            return counter
+   }
+   
+   
+   
+     const [startingV, setStratingV]= useState("")
     const [alertV, setAlertV]=useState("")
         
     if(alertV==counter && alertV!=""){alert("we got it")}
+    if(counter===0 && startingV!==""){alert("Its Game Over Man!!!")}
 
-    const [isButtonDisabled, setButtonDisabled] = useState(true);
-	
-    const disableButton = () => {
-		setButtonDisabled(true);
-		
-	};
-
-	const enableButton = () => {
-		setButtonDisabled(false);
-		
-	};
-
-  
-
-  
-  
 console.log(counter)
 
 return( 
-<div> 
+<div id="mainDiv"> 
     <div className="bigCounter">
             <div className="clock"><i class="far fa-clock"></i></div>
             <div>{(Math.floor(counter/1000000)) % 10}</div>
@@ -59,18 +51,17 @@ return(
             <div>{(Math.floor(counter/1000)) % 10}</div>
             <div>{(Math.floor(counter/100))% 10}</div>
             <div>{(Math.floor(counter/10)) % 10}</div>
-            <div>{counter%10}</div>
+            <div>{defCounter()%10}</div>
     </div>
     <div className="d-flex justify-content-center p-3">
              <Button name="Stop" color="red" event={()=>{clearInterval(id.current)
-                clearInterval(od.current)
-                    enableButton()}}/>
-		     <Button name="Start" color="green"  event={()=>{handelTime()
-                    disableButton()}} disabled={isButtonDisabled}/>
+                clearInterval(od.current)}}/>
+		     <Button name="Start" color="green"  event={()=>{clearInterval(id.current)
+                    clearInterval(od.current)
+                    handelTime()}}/>
 		     <Button name="Reset" color="blue" event={()=>{
                     clearInterval(id.current)
                     clearInterval(od.current)
-                    enableButton()
                     setCounter(0)}}/>
              
     </div>
@@ -80,12 +71,13 @@ return(
     </div>
     <div className="container d-flex justify-content-center p-3">
             <Button color="yellow" name="Press to set Starting Value" textcolor="black" event={()=>{clearInterval(id.current)
-            clearInterval(od.current)
-            setCounter(startingV)
-            enableButton()}}/>
-            <Button color="pruple" name="Press to Start countdown" textcolor="black" event={()=>{countDown()
-                disableButton()}} disabled={isButtonDisabled}/>
+                clearInterval(od.current)
+                setCounter(startingV)}}/>
+            <Button color="pruple" name="Press to Start countdown" textcolor="black" event={()=>{clearInterval(od.current)
+                clearInterval(id.current)
+                countDown()}} />
     </div>
+    <Footer/>
 </div>)
       
 

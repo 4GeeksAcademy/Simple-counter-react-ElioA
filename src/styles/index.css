@@ -4,9 +4,6 @@
 
 }
 
-
-
-
 .bigCounter div{
     display: inline-block;
     font-size: 60px;
@@ -15,4 +12,18 @@
     color:white;
     padding:10px;
     margin: 5px;
+}
+
+
+body{
+    background-color: rgb(207, 203, 197);
+}
+#footer { 
+    margin-top: auto;
+
+}
+#mainDiv{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
