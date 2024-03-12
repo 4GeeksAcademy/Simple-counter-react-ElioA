@@ -27,18 +27,22 @@ const Timer=()=>{
 
    const defCounter=()=>{
         if(counter<0){clearInterval(od.current)
+        setStratingV("")
         setCounter(0)}
             return counter
    }
    
-
+const alertFunc=()=>{
+    setAlertV("")
+    alert("we got it")
+}
     
    
    const [startingV, setStratingV]= useState("")
     const [alertV, setAlertV]=useState("")
         
-    if(alertV==counter && alertV!=""){alert("we got it")}
-    if(counter===0 && startingV!==""){alert("Its Game Over Man!!!")}
+    if(alertV==counter && alertV!=""){alertFunc()}
+    if(counter<0 && startingV!==""){alert("Its Game Over Man!!!")}
 
 console.log(counter)
 
